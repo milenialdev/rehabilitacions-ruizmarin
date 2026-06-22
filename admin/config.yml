@@ -5,6 +5,14 @@ backend:
 media_folder: "imatges"
 public_folder: "/imatges"
 
+roles:
+  - name: admin
+    permissions:
+      - "manage_all"
+
+media_folder: "imatges"
+public_folder: "/imatges"
+
 collections:
   - name: "treballs"
     label: "Treballs realitzats"
