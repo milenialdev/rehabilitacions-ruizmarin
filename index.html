@@ -501,6 +501,7 @@ footer{
   .hero-stat:not(:last-child){border-right:none;padding-right:0;margin-right:0}
 }
 </style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -755,6 +756,17 @@ function handleSend(e){
     e.target.reset();
   },900);
 }
+</script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
