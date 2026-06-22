@@ -5,14 +5,6 @@ backend:
 media_folder: "imatges"
 public_folder: "/imatges"
 
-roles:
-  - name: admin
-    permissions:
-      - "manage_all"
-
-media_folder: "imatges"
-public_folder: "/imatges"
-
 collections:
   - name: "treballs"
     label: "Treballs realitzats"
@@ -21,8 +13,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Títol", name: "title", widget: "string", required: true }
-      - { label: "Categoria", name: "categoria", widget: "select", 
-          options: ["Façanes", "Impermeabilitzacions", "Treballs en altura"], required: true }
+      - { label: "Categoria", name: "categoria", widget: "select", options: ["Façanes", "Impermeabilitzacions", "Treballs en altura"], required: true }
       - { label: "Ubicació", name: "ubicacio", widget: "string", required: true }
       - { label: "Foto", name: "foto", widget: "image", required: true }
       - { label: "Descripció", name: "descripcio", widget: "text" }
