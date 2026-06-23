@@ -59,7 +59,7 @@
       return;
     }
 
-    const texts = await Promise.all(files.map(f => fetch(f.download_url).then(r => r.text())));
+    const texts = await Promise.all(files.map(f => fetch(`${f.download_url}?sha=${f.sha}`).then(r => r.text())));
     const treballs = texts.map(parseFrontmatter).filter(t => t.title);
 
     grid.innerHTML = '';

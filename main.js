@@ -135,7 +135,7 @@ if (window.netlifyIdentity) {
     const files = (await res.json()).filter(f => f.name.endsWith('.md'));
     if (files.length === 0) return;
 
-    const texts = await Promise.all(files.map(f => fetch(f.download_url).then(r => r.text())));
+    const texts = await Promise.all(files.map(f => fetch(`${f.download_url}?sha=${f.sha}`).then(r => r.text())));
     const treballs = texts.map(parseFrontmatter).filter(t => t.title);
     if (treballs.length === 0) return;
 
