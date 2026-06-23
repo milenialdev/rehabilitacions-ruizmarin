@@ -463,6 +463,74 @@ nav{
   font-size:0.83rem;font-weight:500;color:#c0392b;
 }
 
+/* ── PÀGINA TREBALLS ── */
+.obres-hero{
+  background:var(--ink);
+  padding:7rem 2.5rem 3.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.obres-main{
+  padding:3.5rem 2.5rem 5rem;
+  background:var(--off);
+  min-height:60vh;
+}
+.filter-bar{
+  display:flex;gap:0.5rem;flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+.filter-btn{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:0.78rem;font-weight:500;
+  padding:0.5rem 1.1rem;border-radius:100px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--muted);
+  cursor:pointer;transition:all 0.2s;
+}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal)}
+.filter-btn.active{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.obres-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.obra-card{
+  background:var(--white);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform 0.3s cubic-bezier(0.34,1.2,0.64,1);
+  cursor:pointer;
+}
+.obra-card:hover{transform:translateY(-4px)}
+.obra-img{height:200px;overflow:hidden}
+.obra-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease}
+.obra-card:hover .obra-img img{transform:scale(1.04)}
+.obra-img-ph{
+  background:rgba(0,0,0,0.04);
+  display:flex;align-items:center;justify-content:center;
+}
+.obra-img-ph svg{width:32px;height:32px;stroke:var(--muted);fill:none;stroke-width:1.5;opacity:0.35}
+.obra-info{padding:1.25rem 1.5rem 1.5rem}
+.obra-cat{
+  display:inline-block;
+  font-size:0.65rem;font-weight:500;
+  letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--teal);background:var(--teal-bg);
+  border-radius:100px;padding:0.25rem 0.7rem;
+  margin-bottom:0.6rem;
+}
+.obra-title{
+  font-family:'Instrument Serif',serif;
+  font-size:1.15rem;color:var(--ink);
+  line-height:1.2;margin-bottom:0.35rem;
+}
+.obra-loc{font-size:0.75rem;color:var(--muted)}
+.obra-card-ph{
+  grid-column:1/-1;
+  text-align:center;padding:3rem;
+  font-size:0.85rem;color:var(--muted);
+}
+
 /* ── FOOTER ── */
 footer{
   background:var(--ink);
@@ -501,4 +569,10 @@ footer{
   .hero-desc{text-align:left}
   .hero-stats{gap:1.5rem;flex-wrap:wrap}
   .hero-stat:not(:last-child){border-right:none;padding-right:0;margin-right:0}
+  .obres-hero{padding:5.5rem 1.25rem 2.5rem}
+  .obres-main{padding:2.5rem 1.25rem 4rem}
+  .obres-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:540px){
+  .obres-grid{grid-template-columns:1fr}
 }

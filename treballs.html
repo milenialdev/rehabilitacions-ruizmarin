@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treballs realitzats — Rehabilitacions Ruíz Marín</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="logo.svg" alt="Rehabilitacions Ruíz Marín">
+  </a>
+  <ul class="nav-center">
+    <li><a href="/#serveis">Serveis</a></li>
+    <li><a href="/treballs.html" style="color:var(--white)">Treballs</a></li>
+    <li><a href="/#nosaltres">Nosaltres</a></li>
+    <li><a href="/#contacte">Contacte</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+34689242968" class="nav-btn">689 24 29 68</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="obres-hero">
+  <p class="section-label" style="color:rgba(255,255,255,0.4)">Portafoli</p>
+  <h1 class="section-h light">Tots els treballs<br><em style="font-style:italic;color:rgba(255,255,255,0.4)">realitzats</em></h1>
+</section>
+
+<!-- TREBALLS + FILTRES -->
+<section class="obres-main">
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="tots">Tots</button>
+    <button class="filter-btn" data-filter="Façanes">Façanes</button>
+    <button class="filter-btn" data-filter="Impermeabilitzacions">Impermeabilitzacions</button>
+    <button class="filter-btn" data-filter="Treballs en altura">Treballs en altura</button>
+  </div>
+  <div class="obres-grid" id="obres-grid">
+    <p class="obra-card-ph">Carregant treballs...</p>
+  </div>
+  <p id="no-results" style="display:none;color:var(--muted);text-align:center;padding:3rem 0;font-size:0.88rem">
+    No hi ha treballs en aquesta categoria encara.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="logo.svg" alt="Rehabilitacions Ruíz Marín"></div>
+  <p class="footer-copy">© 2025 Rehabilitacions Ruíz Marín · Badalona</p>
+  <p class="footer-copy">Tots els drets reservats</p>
+</footer>
+
+<script src="treballs-page.js"></script>
+</body>
+</html>
