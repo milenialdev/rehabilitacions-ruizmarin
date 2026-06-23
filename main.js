@@ -5,9 +5,59 @@ const obs = new IntersectionObserver(
 );
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
-// Contact form
+// Contact form — validation rules
+const RULES = {
+  nom:      { test: v => v.trim().length >= 2,                                          msg: 'El nom ha de tenir almenys 2 caràcters' },
+  telefon:  { test: v => !v.trim() || /^[6789]\d{8}$/.test(v.replace(/[\s\-]/g, '')), msg: 'Format no vàlid (ex: 689 242 968)' },
+  email:    { test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),                 msg: 'Correu electrònic no vàlid' },
+  missatge: { test: v => v.trim().length >= 10,                                         msg: 'El missatge ha de tenir almenys 10 caràcters' }
+};
+
+function getField(name) {
+  return document.querySelector(`[name="${name}"]`);
+}
+
+function showError(name, msg) {
+  const el = getField(name);
+  if (!el) return;
+  el.classList.add('invalid');
+  let span = el.parentElement.querySelector('.fg-err');
+  if (!span) { span = document.createElement('span'); span.className = 'fg-err'; el.after(span); }
+  span.textContent = msg;
+}
+
+function clearError(name) {
+  const el = getField(name);
+  if (!el) return;
+  el.classList.remove('invalid');
+  const span = el.parentElement.querySelector('.fg-err');
+  if (span) span.textContent = '';
+}
+
+function validateField(name) {
+  const el = getField(name);
+  if (!el || !RULES[name]) return true;
+  const ok = RULES[name].test(el.value);
+  ok ? clearError(name) : showError(name, RULES[name].msg);
+  return ok;
+}
+
+function validateAll() {
+  return Object.keys(RULES).map(validateField).every(Boolean);
+}
+
+// Validate on blur (only if the field has been touched)
+document.addEventListener('DOMContentLoaded', () => {
+  Object.keys(RULES).forEach(name => {
+    const el = getField(name);
+    if (el) el.addEventListener('blur', () => { if (el.value.trim()) validateField(name); });
+  });
+});
+
 function handleSend(e) {
   e.preventDefault();
+  if (!validateAll()) return;
+
   const form = e.target;
   const btn = document.getElementById('fsend');
   btn.disabled = true;
@@ -22,6 +72,7 @@ function handleSend(e) {
       document.getElementById('fok').style.display = 'block';
       btn.style.display = 'none';
       form.reset();
+      Object.keys(RULES).forEach(clearError);
     })
     .catch(() => {
       document.getElementById('ferr').style.display = 'block';
