@@ -102,10 +102,28 @@ if (window.netlifyIdentity) {
     const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
     if (!m) return {};
     const obj = {};
-    m[1].split('\n').forEach(line => {
-      const i = line.indexOf(':');
-      if (i > -1) obj[line.slice(0, i).trim()] = line.slice(i + 1).trim();
-    });
+    const lines = m[1].split(/\r?\n/);
+    let i = 0;
+    while (i < lines.length) {
+      const line = lines[i];
+      if (!line.trim() || /^\s/.test(line)) { i++; continue; }
+      const ci = line.indexOf(':');
+      if (ci < 0) { i++; continue; }
+      const key = line.slice(0, ci).trim();
+      const val = line.slice(ci + 1).trim();
+      if (val === '') {
+        const items = [];
+        i++;
+        while (i < lines.length && /^\s*-\s/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*-\s*/, '').trim());
+          i++;
+        }
+        obj[key] = items;
+      } else {
+        obj[key] = val;
+        i++;
+      }
+    }
     return obj;
   }
 
@@ -119,6 +137,8 @@ if (window.netlifyIdentity) {
     }
     const badge = `${data.categoria || ''}${data.ubicacio ? ' · ' + data.ubicacio : ''}`;
     if (badge) card.innerHTML += `<div class="t-badge">${badge}</div>`;
+    const cat = data.categoria ? `?cat=${encodeURIComponent(data.categoria)}` : '';
+    card.addEventListener('click', () => { window.location.href = `treballs.html${cat}`; });
     return card;
   }
 

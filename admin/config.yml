@@ -15,5 +15,10 @@ collections:
       - { label: "Títol", name: "title", widget: "string", required: true }
       - { label: "Categoria", name: "categoria", widget: "select", options: ["Façanes", "Impermeabilitzacions", "Treballs en altura"], required: true }
       - { label: "Ubicació", name: "ubicacio", widget: "string", required: true }
-      - { label: "Foto", name: "foto", widget: "image", required: true }
-      - { label: "Descripció", name: "descripcio", widget: "text" }
+      - { label: "Foto principal", name: "foto", widget: "image", required: true }
+      - label: "Fotos addicionals"
+        name: "fotos_addicionals"
+        widget: "list"
+        required: false
+        field: { label: "Foto", name: "foto", widget: "image" }
+      - { label: "Descripció", name: "descripcio", widget: "text", required: false }
