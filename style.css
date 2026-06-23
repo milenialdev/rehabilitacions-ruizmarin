@@ -28,7 +28,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:0 2.5rem;height:60px;
 }
-.nav-logo img{height:34px;width:auto}
+.nav-logo img{height:44px;width:auto}
 .nav-center{
   display:flex;gap:2rem;list-style:none;
   position:absolute;left:50%;transform:translateX(-50%);
@@ -463,7 +463,7 @@ footer{
   display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;gap:1rem;
 }
-.footer-logo img{height:30px;opacity:0.55;filter:brightness(10)}
+.footer-logo img{height:38px;opacity:0.55;filter:brightness(10)}
 .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.25);font-weight:400}
 
 /* ── REVEAL ── */
@@ -474,6 +474,7 @@ footer{
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:0 1.25rem}
+  .nav-logo img{height:48px}
   .nav-center{display:none}.nav-btn{display:none}
   #hero,#serveis,#treballs,#cta,#nosaltres,#contacte{padding-left:1.25rem;padding-right:1.25rem}
   #cta{padding:4rem 1.25rem 3.5rem}
