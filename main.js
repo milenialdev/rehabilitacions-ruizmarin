@@ -8,14 +8,26 @@ document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 // Contact form
 function handleSend(e) {
   e.preventDefault();
+  const form = e.target;
   const btn = document.getElementById('fsend');
   btn.disabled = true;
   btn.textContent = 'Enviant...';
-  setTimeout(() => {
-    document.getElementById('fok').style.display = 'block';
-    btn.style.display = 'none';
-    e.target.reset();
-  }, 900);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+    .then(() => {
+      document.getElementById('fok').style.display = 'block';
+      btn.style.display = 'none';
+      form.reset();
+    })
+    .catch(() => {
+      document.getElementById('ferr').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Enviar missatge';
+    });
 }
 
 // Netlify Identity → redirect to /admin after login

@@ -447,6 +447,14 @@ nav{
   padding:0.85rem 1rem;
   font-size:0.83rem;font-weight:500;color:var(--teal-dim);
 }
+.ferror{
+  display:none;margin-top:0.75rem;
+  background:rgba(220,50,50,0.06);
+  border:1px solid rgba(220,50,50,0.25);
+  border-radius:var(--radius-sm);
+  padding:0.85rem 1rem;
+  font-size:0.83rem;font-weight:500;color:#c0392b;
+}
 
 /* ── FOOTER ── */
 footer{

@@ -210,15 +210,16 @@
           <p class="form-top-title">Envia'ns un missatge</p>
           <span style="font-size:0.72rem;color:var(--muted)">Resposta en &lt;24h</span>
         </div>
-        <form id="cf" onsubmit="handleSend(event)">
+        <form id="cf" name="contacte" data-netlify="true" onsubmit="handleSend(event)">
+          <input type="hidden" name="form-name" value="contacte">
           <div class="frow">
-            <div class="fg"><label>Nom</label><input type="text" placeholder="El teu nom" required></div>
-            <div class="fg"><label>Telèfon</label><input type="tel" placeholder="6XX XXX XXX"></div>
+            <div class="fg"><label>Nom</label><input type="text" name="nom" placeholder="El teu nom" required></div>
+            <div class="fg"><label>Telèfon</label><input type="tel" name="telefon" placeholder="6XX XXX XXX"></div>
           </div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="correu@exemple.com" required></div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="correu@exemple.com" required></div>
           <div class="fg">
             <label>Servei</label>
-            <select>
+            <select name="servei">
               <option value="">Selecciona un servei...</option>
               <option>Rehabilitació de façanes</option>
               <option>Impermeabilitzacions</option>
@@ -226,8 +227,9 @@
               <option>Altres</option>
             </select>
           </div>
-          <div class="fg"><label>Missatge</label><textarea placeholder="Descriu breument el teu projecte..." required></textarea></div>
+          <div class="fg"><label>Missatge</label><textarea name="missatge" placeholder="Descriu breument el teu projecte..." required></textarea></div>
           <div class="fsuccess" id="fok">✓ Missatge enviat. Us contactarem aviat!</div>
+          <div class="ferror" id="ferr">✗ Error en l'enviament. Prova-ho de nou o truca'ns directament.</div>
           <button type="submit" class="fsend" id="fsend">Enviar missatge</button>
         </form>
       </div>
